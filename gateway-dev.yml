@@ -1,0 +1,15 @@
+
+server:
+  port: 8080
+spring:  
+  cloud:
+    gateway:
+      routes:
+        - id: movieRoute
+          uri: lb://MOVIES
+          predicates:
+           - Path=/movies/**
+        - id: catalogRoute
+          uri: lb://CATALOG
+          predicates:
+           - Path=/catalog/**
